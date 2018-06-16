@@ -1,4 +1,6 @@
+.vs/
 bin/
+img/
 obj/
 *.user
 *.suo
