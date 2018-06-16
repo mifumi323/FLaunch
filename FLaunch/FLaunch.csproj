@@ -68,12 +68,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormOption.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormOption.Designer.cs">
-      <DependentUpon>FormOption.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormProperty.cs">
       <SubType>Form</SubType>
     </Compile>
