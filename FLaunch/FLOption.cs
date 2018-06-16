@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using System.Reflection;
 
@@ -19,12 +17,12 @@ namespace FLaunch
         }
 
         private bool dirty = false;
-        public void Dirty() { dirty = true; }
+        public void Dirty() => dirty = true;
 
         private int myWidth = 0;
         public int Width
         {
-            get { return myWidth; }
+            get => myWidth;
             set
             {
                 if (myWidth != value)
@@ -37,7 +35,7 @@ namespace FLaunch
         private int myHeight;
         public int Height
         {
-            get { return myHeight; }
+            get => myHeight;
             set
             {
                 if (myHeight != value)

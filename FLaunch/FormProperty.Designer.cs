@@ -142,7 +142,7 @@
             this.txtFile.Name = "txtFile";
             this.txtFile.Size = new System.Drawing.Size(205, 19);
             this.txtFile.TabIndex = 3;
-            this.txtFile.TextChanged += new System.EventHandler(this.txtFile_TextChanged);
+            this.txtFile.TextChanged += new System.EventHandler(this.TxtFile_TextChanged);
             // 
             // lblFile
             // 
@@ -200,7 +200,7 @@
             this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "キャンセル";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // btnOK
             // 
@@ -211,7 +211,7 @@
             this.btnOK.TabIndex = 11;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
             // btnLink
             // 
@@ -223,7 +223,7 @@
             this.btnLink.TabIndex = 13;
             this.btnLink.Text = "リンク解析";
             this.btnLink.UseVisualStyleBackColor = true;
-            this.btnLink.Click += new System.EventHandler(this.btnLink_Click);
+            this.btnLink.Click += new System.EventHandler(this.BtnLink_Click);
             // 
             // FormProperty
             // 

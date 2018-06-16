@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
@@ -45,22 +43,22 @@ namespace FLaunch
             InitializeComponent();
         }
 
-        private void notifyIcon1_Click(object sender, EventArgs e)
+        private void NotifyIcon1_Click(object sender, EventArgs e)
         {
-            if (this.Visible)
+            if (Visible)
             {
-                this.Hide();
+                Hide();
             }
             else
             {
                 UpdateList();
-                this.Location = Cursor.Position;
-                if (this.Right > Screen.PrimaryScreen.WorkingArea.Right) this.Left -= this.Width;
-                if (this.Bottom > Screen.PrimaryScreen.WorkingArea.Bottom) this.Top -= this.Height;
-                if (this.Left < Screen.PrimaryScreen.WorkingArea.Left) this.Left = Screen.PrimaryScreen.WorkingArea.Left;
-                if (this.Top < Screen.PrimaryScreen.WorkingArea.Top) this.Top = Screen.PrimaryScreen.WorkingArea.Top;
-                this.Show();
-                this.Activate();
+                Location = Cursor.Position;
+                if (Right > Screen.PrimaryScreen.WorkingArea.Right) Left -= Width;
+                if (Bottom > Screen.PrimaryScreen.WorkingArea.Bottom) Top -= Height;
+                if (Left < Screen.PrimaryScreen.WorkingArea.Left) Left = Screen.PrimaryScreen.WorkingArea.Left;
+                if (Top < Screen.PrimaryScreen.WorkingArea.Top) Top = Screen.PrimaryScreen.WorkingArea.Top;
+                Show();
+                Activate();
             }
         }
 
@@ -72,10 +70,10 @@ namespace FLaunch
             panel1.Refresh();
         }
 
-        int scoreComparison(FLItem x, FLItem y) { return y.score.CompareTo(x.score); }
-        int dateComparison(FLItem x, FLItem y) { return y.date.CompareTo(x.date); }
-        int nameComparison(FLItem x, FLItem y) { return x.name.CompareTo(y.name); }
-        int fileComparison(FLItem x, FLItem y) { return x.file.CompareTo(y.file); }
+        int ScoreComparison(FLItem x, FLItem y) => y.score.CompareTo(x.score);
+        int DateComparison(FLItem x, FLItem y) => y.date.CompareTo(x.date);
+        int NameComparison(FLItem x, FLItem y) => x.name.CompareTo(y.name);
+        int FileComparison(FLItem x, FLItem y) => x.file.CompareTo(y.file);
 
         private void UpdateScroll()
         {
@@ -94,25 +92,25 @@ namespace FLaunch
             option = new FLOption();
             if (option.Width > 0) Width = option.Width;
             if (option.Height > 0) Height = option.Height;
-            comparison = scoreComparison;
-            notifyIcon1.Icon = this.Icon;
-            panel1.SetBounds(0, menuStrip1.Height, this.ClientSize.Width - vScrollBar1.Width, this.ClientSize.Height - menuStrip1.Height);
+            comparison = ScoreComparison;
+            notifyIcon1.Icon = Icon;
+            panel1.SetBounds(0, menuStrip1.Height, ClientSize.Width - vScrollBar1.Width, ClientSize.Height - menuStrip1.Height);
             vScrollBar1.SetBounds(panel1.Width, panel1.Top, vScrollBar1.Width, panel1.Height);
 
             Icon = Resources.FLaunch;
             notifyIcon1.Icon = Icon;
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bRunning = false;
-            this.Close();
+            Close();
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            this.Hide();
-            this.Opacity = 1.0;
+            Hide();
+            Opacity = 1.0;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -120,7 +118,7 @@ namespace FLaunch
             if (bRunning && e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                this.Hide();
+                Hide();
             }
             else
             {
@@ -131,7 +129,7 @@ namespace FLaunch
 
         private void Form1_Deactivate(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             option.Save();
         }
 
@@ -143,7 +141,7 @@ namespace FLaunch
                 vScrollBar1.Maximum - vScrollBar1.LargeChange + 1);
         }
 
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        private void Panel1_MouseMove(object sender, MouseEventArgs e)
         {
             int i = (e.Y + vScrollBar1.Value + font.Height) / font.Height - 1;
             if (0 <= i && i < list.Length) Selected = list[i];
@@ -151,7 +149,7 @@ namespace FLaunch
             panel1.Refresh();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void Panel1_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             PointF point = new PointF(18.0f, (float)-vScrollBar1.Value);
@@ -160,7 +158,7 @@ namespace FLaunch
             {
                 if (-h < point.Y && point.Y < panel1.ClientRectangle.Height)
                 {
-                    if (item == Selected) g.FillRectangle(brushSel, 0.0f, point.Y, (float)this.ClientRectangle.Width, h);
+                    if (item == Selected) g.FillRectangle(brushSel, 0.0f, point.Y, ClientRectangle.Width, h);
                     Icon icon = GetIcon(item.file);
                     if (icon != null) g.DrawIcon(icon, new Rectangle(1, (int)point.Y + 1, 16, 16));
                     g.DrawString(item.name, font, item != Selected ? brush : brushSelText, point);
@@ -180,7 +178,7 @@ namespace FLaunch
             }
         }
 
-        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        private void Panel1_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left) Execute();
             else if (e.Button == MouseButtons.Right) ShowMenu();
@@ -196,7 +194,7 @@ namespace FLaunch
         {
             if (Selected == null) return;
             // この順番でないと自身をパラメータつきで呼び出したときまずい
-            this.Hide();
+            Hide();
             if (!File.Exists(Selected.file))
             {
                 MessageBox.Show(
@@ -210,17 +208,16 @@ namespace FLaunch
             Process.Start(Selected.file, Selected.arguments);
         }
 
-        private void panel1_MouseLeave(object sender, EventArgs e)
+        private void Panel1_MouseLeave(object sender, EventArgs e)
         {
             if (contextMenuStrip1.Visible) return;
             Selected = null;
             panel1.Refresh();
         }
 
-        private void vScrollBar1_ValueChanged(object sender, EventArgs e)
-        { panel1.Refresh(); }
+        private void VScrollBar1_ValueChanged(object sender, EventArgs e) => panel1.Refresh();
 
-        private void panel1_Resize(object sender, EventArgs e)
+        private void Panel1_Resize(object sender, EventArgs e)
         {
             UpdateScroll();
             if (option != null)
@@ -230,38 +227,36 @@ namespace FLaunch
             }
         }
 
-        private void scoreToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            comparison = scoreComparison;
+            comparison = ScoreComparison;
             UpdateList();
         }
-        private void dateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            comparison = dateComparison;
+            comparison = DateComparison;
             UpdateList();
         }
-        private void nameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            comparison = nameComparison;
+            comparison = NameComparison;
             UpdateList();
         }
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            comparison = fileComparison;
+            comparison = FileComparison;
             UpdateList();
         }
 
-        private void executeToolStripMenuItem_Click(object sender, EventArgs e)
-        { Execute(); }
+        private void ExecuteToolStripMenuItem_Click(object sender, EventArgs e) => Execute();
 
-        private void contextMenuStrip1_Closed(object sender, ToolStripDropDownClosedEventArgs e)
+        private void ContextMenuStrip1_Closed(object sender, ToolStripDropDownClosedEventArgs e)
         {
             //selected = null;
             //panel1.Refresh();
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        { Delete(); }
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) => Delete();
         private void Delete()
         {
             if (Selected == null) return;
@@ -269,10 +264,10 @@ namespace FLaunch
             UpdateList();
         }
 
-        private void openDirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OpenDirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Selected == null) return;
-            this.Hide();
+            Hide();
             if (Selected.dir == "")
             {
                 MessageBox.Show("作業フォルダがありません。");
@@ -288,23 +283,24 @@ namespace FLaunch
             }
         }
 
-        private void propertyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PropertyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormProperty fp = new FormProperty();
-            fp.Item = Selected;
-            fp.Show();
+            new FormProperty
+            {
+                Item = Selected
+            }.Show();
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             Rectangle rect = new Rectangle(0,0,szIcon.Width, szIcon.Height);
-            string file;
             int count;
-            bool read;
             Icon icon = null;
             lock (this) count = iconToRead.Count;
             while (count > 0)
             {
+                string file;
+                bool read;
                 lock (this)
                 {
                     file = iconToRead.Dequeue();
@@ -323,12 +319,12 @@ namespace FLaunch
             }
         }
 
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (this.Visible) panel1.Refresh();
+            if (Visible) panel1.Refresh();
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Application.ProductName + "\n" + Application.ProductVersion);
         }

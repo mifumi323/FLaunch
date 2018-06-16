@@ -60,7 +60,7 @@
             // 
             this.notifyIcon1.Text = "浮き沈みランチャー";
             this.notifyIcon1.Visible = true;
-            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
+            this.notifyIcon1.Click += new System.EventHandler(this.NotifyIcon1_Click);
             // 
             // menuStrip1
             // 
@@ -92,28 +92,28 @@
             this.scoreToolStripMenuItem.Name = "scoreToolStripMenuItem";
             this.scoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scoreToolStripMenuItem.Text = "スコアで並べ替え";
-            this.scoreToolStripMenuItem.Click += new System.EventHandler(this.scoreToolStripMenuItem_Click);
+            this.scoreToolStripMenuItem.Click += new System.EventHandler(this.ScoreToolStripMenuItem_Click);
             // 
             // dateToolStripMenuItem
             // 
             this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
             this.dateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dateToolStripMenuItem.Text = "利用日時で並べ替え";
-            this.dateToolStripMenuItem.Click += new System.EventHandler(this.dateToolStripMenuItem_Click);
+            this.dateToolStripMenuItem.Click += new System.EventHandler(this.DateToolStripMenuItem_Click);
             // 
             // nameToolStripMenuItem
             // 
             this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
             this.nameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nameToolStripMenuItem.Text = "名前で並べ替え";
-            this.nameToolStripMenuItem.Click += new System.EventHandler(this.nameToolStripMenuItem_Click);
+            this.nameToolStripMenuItem.Click += new System.EventHandler(this.NameToolStripMenuItem_Click);
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fileToolStripMenuItem.Text = "ファイル名で並べ替え";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.FileToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -126,7 +126,7 @@
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "バージョン情報(&A)...";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -138,7 +138,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "終了(&E)";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // vScrollBar1
             // 
@@ -148,7 +148,7 @@
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(16, 148);
             this.vScrollBar1.TabIndex = 2;
-            this.vScrollBar1.ValueChanged += new System.EventHandler(this.vScrollBar1_ValueChanged);
+            this.vScrollBar1.ValueChanged += new System.EventHandler(this.VScrollBar1_ValueChanged);
             // 
             // panel1
             // 
@@ -160,11 +160,11 @@
             this.panel1.Size = new System.Drawing.Size(117, 91);
             this.panel1.TabIndex = 3;
             this.panel1.TabStop = false;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panel1.MouseLeave += new System.EventHandler(this.panel1_MouseLeave);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
-            this.panel1.Resize += new System.EventHandler(this.panel1_Resize);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
+            this.panel1.MouseLeave += new System.EventHandler(this.Panel1_MouseLeave);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseUp);
+            this.panel1.Resize += new System.EventHandler(this.Panel1_Resize);
             // 
             // contextMenuStrip1
             // 
@@ -177,21 +177,21 @@
             this.propertyToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(162, 104);
-            this.contextMenuStrip1.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.contextMenuStrip1_Closed);
+            this.contextMenuStrip1.Closed += new System.Windows.Forms.ToolStripDropDownClosedEventHandler(this.ContextMenuStrip1_Closed);
             // 
             // executeToolStripMenuItem
             // 
             this.executeToolStripMenuItem.Name = "executeToolStripMenuItem";
             this.executeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.executeToolStripMenuItem.Text = "実行(&E)";
-            this.executeToolStripMenuItem.Click += new System.EventHandler(this.executeToolStripMenuItem_Click);
+            this.executeToolStripMenuItem.Click += new System.EventHandler(this.ExecuteToolStripMenuItem_Click);
             // 
             // openDirToolStripMenuItem
             // 
             this.openDirToolStripMenuItem.Name = "openDirToolStripMenuItem";
             this.openDirToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.openDirToolStripMenuItem.Text = "作業フォルダを開く";
-            this.openDirToolStripMenuItem.Click += new System.EventHandler(this.openDirToolStripMenuItem_Click);
+            this.openDirToolStripMenuItem.Click += new System.EventHandler(this.OpenDirToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
@@ -203,7 +203,7 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.deleteToolStripMenuItem.Text = "削除(&D)";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -215,12 +215,12 @@
             this.propertyToolStripMenuItem.Name = "propertyToolStripMenuItem";
             this.propertyToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.propertyToolStripMenuItem.Text = "プロパティ";
-            this.propertyToolStripMenuItem.Click += new System.EventHandler(this.propertyToolStripMenuItem_Click);
+            this.propertyToolStripMenuItem.Click += new System.EventHandler(this.PropertyToolStripMenuItem_Click);
             // 
             // backgroundWorker1
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
             // Form1
             // 
@@ -244,7 +244,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseWheel);
-            this.Resize += new System.EventHandler(this.panel1_Resize);
+            this.Resize += new System.EventHandler(this.Panel1_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panel1)).EndInit();

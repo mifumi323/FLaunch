@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using util;
 
@@ -44,16 +43,16 @@ namespace FLaunch
         }
         public override bool Equals(object obj)
         {
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             FLItem o = (FLItem)obj;
-            return o.name == this.name
-                && o.file == this.file
-                && o.dir == this.dir
-                && o.score == this.score
-                && o.date == this.date
-                && o.arguments == this.arguments;
+            return o.name == name
+                && o.file == file
+                && o.dir == dir
+                && o.score == score
+                && o.date == date
+                && o.arguments == arguments;
         }
-        public override int GetHashCode() { return base.GetHashCode(); }
+        public override int GetHashCode() => base.GetHashCode();
         public void CopyFrom(FLItem from)
         {
             name = from.name;
