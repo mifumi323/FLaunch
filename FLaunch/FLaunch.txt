@@ -86,6 +86,10 @@ List.tsv   ：項目のリスト(ユーザーごとのフォルダに作成)
 http://fml.cside.to/program/net/shelllink_00.html
 (C#用に書き直してくださった方の名前がわかりませんでした)
 
+アイコンに、いらすとや(https://www.irasutoya.com/)さんの
+素材「いろいろな海のイメージのアイコン」を使用しております。
+https://www.irasutoya.com/2013/11/blog-post_3484.html
+
 ●履歴
 0.8.1 Windows 10に対応
       バージョン表記を変更

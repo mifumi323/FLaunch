@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using FLaunch.Properties;
 
 namespace FLaunch
 {
@@ -97,6 +98,9 @@ namespace FLaunch
             notifyIcon1.Icon = this.Icon;
             panel1.SetBounds(0, menuStrip1.Height, this.ClientSize.Width - vScrollBar1.Width, this.ClientSize.Height - menuStrip1.Height);
             vScrollBar1.SetBounds(panel1.Width, panel1.Top, vScrollBar1.Width, panel1.Height);
+
+            Icon = Resources.FLaunch;
+            notifyIcon1.Icon = Icon;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

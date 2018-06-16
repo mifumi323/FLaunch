@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using FLaunch.Properties;
 using util;
 
 namespace FLaunch
@@ -63,6 +64,11 @@ namespace FLaunch
                 return;
             }
             catch (Exception) { }
+        }
+
+        private void FormProperty_Load(object sender, EventArgs e)
+        {
+            Icon = Resources.FLaunch;
         }
     }
 }
