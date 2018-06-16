@@ -20,7 +20,7 @@ namespace FLaunch
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new FormMain());
         }
 
         /// <summary>バージョンに依存しないユーザーのアプリケーションデータのパス</summary>

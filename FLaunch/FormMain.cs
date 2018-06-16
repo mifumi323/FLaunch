@@ -11,7 +11,7 @@ using FLaunch.Properties;
 
 namespace FLaunch
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
         bool bRunning = true;
 
@@ -40,7 +40,7 @@ namespace FLaunch
 
         Comparison<FLItem> comparison;
 
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -294,9 +294,6 @@ namespace FLaunch
             fp.Item = Selected;
             fp.Show();
         }
-
-        private void optionToolStripMenuItem_Click(object sender, EventArgs e)
-        { MessageBox.Show("未実装！！"); }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
