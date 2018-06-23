@@ -2,7 +2,4 @@
 bin/
 img/
 obj/
-*.user
-*.suo
-*.lnk
-release.bat
+publish/
