@@ -336,5 +336,15 @@ namespace FLaunch
             MessageBox.Show(Application.ProductName + "\n" + Application.ProductVersion);
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var helpFile = Path.Combine(Application.StartupPath, @"FLaunch.txt");
+            if (!File.Exists(helpFile))
+            {
+                MessageBox.Show("取扱説明書が見つかりませんでした。\nがんばって気合いで使い方をマスターしてください＞＜");
+                return;
+            }
+            Process.Start(helpFile);
+        }
     }
 }
