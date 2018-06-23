@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 using FLaunch.Properties;
 
 namespace FLaunch
@@ -262,12 +262,6 @@ namespace FLaunch
         }
 
         private void ExecuteToolStripMenuItem_Click(object sender, EventArgs e) => Execute();
-
-        private void ContextMenuStrip1_Closed(object sender, ToolStripDropDownClosedEventArgs e)
-        {
-            //selected = null;
-            //panel1.Refresh();
-        }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e) => Delete();
         private void Delete()
