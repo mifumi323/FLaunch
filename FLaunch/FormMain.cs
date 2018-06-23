@@ -93,6 +93,7 @@ namespace FLaunch
             if (option.Width > 0) Width = option.Width;
             if (option.Height > 0) Height = option.Height;
             comparison = ScoreComparison;
+            UpdateSortMenu(scoreToolStripMenuItem);
             notifyIcon1.Icon = Icon;
             panel1.SetBounds(0, menuStrip1.Height, ClientSize.Width - vScrollBar1.Width, ClientSize.Height - menuStrip1.Height);
             vScrollBar1.SetBounds(panel1.Width, panel1.Top, vScrollBar1.Width, panel1.Height);
@@ -230,22 +231,34 @@ namespace FLaunch
         private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             comparison = ScoreComparison;
+            UpdateSortMenu(sender);
             UpdateList();
         }
         private void DateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             comparison = DateComparison;
+            UpdateSortMenu(sender);
             UpdateList();
         }
         private void NameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             comparison = NameComparison;
+            UpdateSortMenu(sender);
             UpdateList();
         }
         private void FileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             comparison = FileComparison;
+            UpdateSortMenu(sender);
             UpdateList();
+        }
+
+        private void UpdateSortMenu(object sender)
+        {
+            foreach (var menu in new ToolStripMenuItem[] { scoreToolStripMenuItem, dateToolStripMenuItem, nameToolStripMenuItem, fileToolStripMenuItem })
+            {
+                menu.Checked = menu == sender;
+            }
         }
 
         private void ExecuteToolStripMenuItem_Click(object sender, EventArgs e) => Execute();
