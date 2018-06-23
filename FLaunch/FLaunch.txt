@@ -85,6 +85,7 @@ List.tsv   ：項目のリスト(ユーザーごとのフォルダに作成)
 により開発されたプログラムを改変したものを使っています。
 http://fml.cside.to/program/net/shelllink_00.html
 (C#用に書き直してくださった方の名前がわかりませんでした)
+This product includes software developed by vbAccelerator (/index.html).
 
 アイコンに、いらすとや(https://www.irasutoya.com/)さんの
 素材「いろいろな海のイメージのアイコン」を使用しております。
