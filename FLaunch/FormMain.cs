@@ -100,6 +100,7 @@ namespace FLaunch
 
             Icon = Resources.FLaunch;
             notifyIcon1.Icon = Icon;
+            fLaunchToolStripMenuItem.Text = Program.Title;
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -333,7 +334,9 @@ namespace FLaunch
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Application.ProductName + "\n" + Application.ProductVersion);
+            var message = $"{Program.Title}\nVersion: {Application.ProductVersion}\n{Program.Copyright}";
+            var title = $"{Program.Title}のバージョン情報";
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -341,7 +344,9 @@ namespace FLaunch
             var helpFile = Path.Combine(Application.StartupPath, @"FLaunch.txt");
             if (!File.Exists(helpFile))
             {
-                MessageBox.Show("取扱説明書が見つかりませんでした。\nがんばって気合いで使い方をマスターしてください＞＜");
+                var message = "取扱説明書が見つかりませんでした。\nがんばって気合いで使い方をマスターしてください＞＜";
+                var title = $"{Program.Title}の取扱説明書";
+                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             Process.Start(helpFile);

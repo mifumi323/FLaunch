@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace FLaunch
@@ -31,6 +32,34 @@ namespace FLaunch
                     "\\" + Application.CompanyName + "\\" + Application.ProductName;
                 if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                 return path;
+            }
+        }
+
+        private static string title = null;
+        /// <summary>アプリケーションのタイトルを取得します。</summary>
+        public static string Title
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(title))
+                {
+                    title = ((AssemblyTitleAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyTitleAttribute))).Title;
+                }
+                return title;
+            }
+        }
+
+        private static string copyright = null;
+        /// <summary>アプリケーションの著作権情報を取得します。</summary>
+        public static string Copyright
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(copyright))
+                {
+                    copyright = ((AssemblyCopyrightAttribute)Attribute.GetCustomAttribute(Assembly.GetExecutingAssembly(), typeof(AssemblyCopyrightAttribute))).Copyright;
+                }
+                return copyright;
             }
         }
     }
