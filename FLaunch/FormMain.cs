@@ -89,17 +89,22 @@ namespace FLaunch
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // サイズ等の初期設定
             option = new FLOption();
             if (option.Width > 0) Width = option.Width;
             if (option.Height > 0) Height = option.Height;
-            comparison = ScoreComparison;
-            UpdateSortMenu(scoreToolStripMenuItem);
-            notifyIcon1.Icon = Icon;
             panel1.SetBounds(0, menuStrip1.Height, ClientSize.Width - vScrollBar1.Width, ClientSize.Height - menuStrip1.Height);
             vScrollBar1.SetBounds(panel1.Width, panel1.Top, vScrollBar1.Width, panel1.Height);
 
+            // 並べ替え
+            comparison = ScoreComparison;
+            UpdateSortMenu(scoreToolStripMenuItem);
+
+            // 見た目の設定
             Icon = Resources.FLaunch;
             notifyIcon1.Icon = Icon;
+            notifyIcon1.Text = Program.Title;
+            notifyIcon1.Visible = true;
             fLaunchToolStripMenuItem.Text = Program.Title;
         }
 
