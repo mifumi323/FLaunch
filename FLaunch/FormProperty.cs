@@ -22,7 +22,7 @@ namespace FLaunch
                 txtTag.Text = value.Tag;
             }
         }
-	
+
         public FormProperty()
         {
             InitializeComponent();

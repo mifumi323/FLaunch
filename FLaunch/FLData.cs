@@ -80,8 +80,8 @@ namespace FLaunch
             set { tag = value.Split(sepalators, StringSplitOptions.RemoveEmptyEntries); }
         }
 
-        static string sepalator = ",";
-        static char[] sepalators = new char[] { ',', ' ', '\t', '\r', '\n' };
+        static readonly string sepalator = ",";
+        static readonly char[] sepalators = new char[] { ',', ' ', '\t', '\r', '\n' };
     }
 
     public class FLList : LinkedList<FLItem> { }
@@ -98,7 +98,7 @@ namespace FLaunch
             }
         }
 
-        FLList list = new FLList();
+        readonly FLList list = new FLList();
 
         delegate bool Operator(FLItem item);
 
@@ -144,7 +144,7 @@ namespace FLaunch
                 }
             }
         }
-        private void Save() { Save(delegate(FLItem item) { return true; }); }
+        private void Save() { Save(delegate (FLItem item) { return true; }); }
 
         public static void Add(string p)
         {
@@ -175,7 +175,7 @@ namespace FLaunch
         {
             FLData data = new FLData();
             double d = (double)data.list.Count / (data.list.Count + 1);
-            data.Save(delegate(FLItem item2)
+            data.Save(delegate (FLItem item2)
             {
                 if (item.Equals(item2))
                 {
@@ -189,12 +189,12 @@ namespace FLaunch
         public static void Delete(FLItem item)
         {
             FLData data = new FLData();
-            data.Save(delegate(FLItem item2) { return !item.Equals(item2); });
+            data.Save(delegate (FLItem item2) { return !item.Equals(item2); });
         }
         public static void Replace(FLItem from, FLItem to)
         {
             FLData data = new FLData();
-            data.Save(delegate(FLItem item)
+            data.Save(delegate (FLItem item)
             {
                 if (item.Equals(from)) item.CopyFrom(to);
                 return true;

@@ -34,7 +34,6 @@ namespace FLaunch
 
         Dictionary<string, Icon> icons = new Dictionary<string, Icon>();
         Queue<string> iconToRead = new Queue<string>();
-        Size szIcon = new Size(16, 16);
 
         Comparison<FLItem> comparison;
 
@@ -306,7 +305,6 @@ namespace FLaunch
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            Rectangle rect = new Rectangle(0,0,szIcon.Width, szIcon.Height);
             int count;
             Icon icon = null;
             lock (this) count = iconToRead.Count;
@@ -344,7 +342,7 @@ namespace FLaunch
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var helpFile = Path.Combine(Application.StartupPath, @"FLaunch.txt");
             if (!File.Exists(helpFile))
