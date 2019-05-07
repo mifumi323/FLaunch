@@ -45,6 +45,7 @@
             this.panel1 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.executeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openDirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -177,6 +178,7 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.executeToolStripMenuItem,
+            this.runAsToolStripMenuItem,
             this.openDirToolStripMenuItem,
             this.toolStripMenuItem3,
             this.deleteToolStripMenuItem,
@@ -191,6 +193,13 @@
             this.executeToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.executeToolStripMenuItem.Text = "実行(&E)";
             this.executeToolStripMenuItem.Click += new System.EventHandler(this.ExecuteToolStripMenuItem_Click);
+            // 
+            // runAsToolStripMenuItem
+            // 
+            this.runAsToolStripMenuItem.Name = "runAsToolStripMenuItem";
+            this.runAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.runAsToolStripMenuItem.Text = "管理者として実行(&A)";
+            this.runAsToolStripMenuItem.Click += new System.EventHandler(this.RunAsToolStripMenuItem_Click);
             // 
             // openDirToolStripMenuItem
             // 
@@ -285,6 +294,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem runAsToolStripMenuItem;
     }
 }
 

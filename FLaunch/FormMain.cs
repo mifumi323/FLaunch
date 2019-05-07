@@ -196,7 +196,7 @@ namespace FLaunch
             contextMenuStrip1.Show(Cursor.Position);
         }
 
-        private void Execute()
+        private void Execute(bool runAs = false)
         {
             if (Selected == null) return;
             // この順番でないと自身をパラメータつきで呼び出したときまずい
@@ -211,7 +211,12 @@ namespace FLaunch
             FLData.Score(Selected);
             try { Directory.SetCurrentDirectory(Selected.dir); }
             catch (Exception) { }
-            Process.Start(Selected.file, Selected.arguments);
+            var psi = new ProcessStartInfo(Selected.file, Selected.arguments);
+            if (runAs)
+            {
+                psi.Verb = "RunAs";
+            }
+            Process.Start(psi);
         }
 
         private void Panel1_MouseLeave(object sender, EventArgs e)
@@ -353,6 +358,11 @@ namespace FLaunch
                 return;
             }
             Process.Start(helpFile);
+        }
+
+        private void RunAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Execute(true);
         }
     }
 }
