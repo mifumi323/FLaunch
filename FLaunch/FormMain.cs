@@ -27,13 +27,13 @@ namespace FLaunch
 
         FLOption option = null;
 
-        Font font = new Font("Arial", 12);
-        Brush brush = new SolidBrush(SystemColors.WindowText);
-        Brush brushSel = new SolidBrush(SystemColors.Highlight);
-        Brush brushSelText = new SolidBrush(SystemColors.HighlightText);
+        readonly Font font = new Font("Arial", 12);
+        readonly Brush brush = new SolidBrush(SystemColors.WindowText);
+        readonly Brush brushSel = new SolidBrush(SystemColors.Highlight);
+        readonly Brush brushSelText = new SolidBrush(SystemColors.HighlightText);
 
-        Dictionary<string, Icon> icons = new Dictionary<string, Icon>();
-        Queue<string> iconToRead = new Queue<string>();
+        readonly Dictionary<string, Icon> icons = new Dictionary<string, Icon>();
+        readonly Queue<string> iconToRead = new Queue<string>();
 
         Comparison<FLItem> comparison;
 
