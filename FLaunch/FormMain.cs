@@ -364,5 +364,20 @@ namespace FLaunch
         {
             Execute(true);
         }
+
+        private void OpenFileDirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Selected == null) return;
+            Hide();
+            try
+            {
+                var dir = Path.GetDirectoryName(Selected.file);
+                Process.Start(dir);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ファイルの場所を開けませんでした。\n" + Selected.file + "\n\n" + ex.Message);
+            }
+        }
     }
 }
