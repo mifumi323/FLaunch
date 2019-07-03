@@ -198,25 +198,28 @@ namespace FLaunch
 
         private void Execute(bool runAs = false)
         {
-            if (Selected == null) return;
+            var selected = Selected;
+            if (selected == null) return;
             // この順番でないと自身をパラメータつきで呼び出したときまずい
             Hide();
-            if (!File.Exists(Selected.file))
-            {
-                MessageBox.Show(
-                    Selected.name + " のファイル\r\n " + Selected.file + "\r\nが見つかりませんでした。",
-                    "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            FLData.Score(Selected);
-            try { Directory.SetCurrentDirectory(Selected.dir); }
+            try { Directory.SetCurrentDirectory(selected.dir); }
             catch (Exception) { }
-            var psi = new ProcessStartInfo(Selected.file, Selected.arguments);
+            var psi = new ProcessStartInfo(selected.file, selected.arguments);
             if (runAs)
             {
                 psi.Verb = "RunAs";
             }
-            Process.Start(psi);
+            try
+            {
+                Process.Start(psi);
+                FLData.Score(selected);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(
+                    $"{selected.name} は実行できませんでした。",
+                    "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void Panel1_MouseLeave(object sender, EventArgs e)
