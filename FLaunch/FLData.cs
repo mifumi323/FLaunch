@@ -173,6 +173,11 @@ namespace FLaunch
         }
         public static void Score(FLItem item)
         {
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
             FLData data = new FLData();
             double d = (double)data.list.Count / (data.list.Count + 1);
             data.Save(delegate (FLItem item2)
