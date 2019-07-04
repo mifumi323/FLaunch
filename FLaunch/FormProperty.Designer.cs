@@ -49,8 +49,8 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
@@ -171,6 +171,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(205, 19);
             this.txtName.TabIndex = 1;
+            this.txtName.TextChanged += new System.EventHandler(this.TxtName_TextChanged);
             // 
             // lblArguments
             // 
@@ -235,7 +236,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormProperty";
-            this.Text = "ぷろぱてい";
+            this.Text = "腑呂派亭";
             this.Load += new System.EventHandler(this.FormProperty_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

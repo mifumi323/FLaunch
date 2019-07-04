@@ -35,7 +35,7 @@ namespace FLaunch
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            FLItem newItem = new FLItem(txtName.Text, txtFile.Text, txtDir.Text, txtArguments.Text, txtComment.Text, txtTag.Text)
+            var newItem = new FLItem(txtName.Text, txtFile.Text, txtDir.Text, txtArguments.Text, txtComment.Text, txtTag.Text)
             {
                 score = myItem.score,
                 date = myItem.date
@@ -53,7 +53,7 @@ namespace FLaunch
         {
             try
             {
-                ShellLink sl = new ShellLink(txtFile.Text);
+                var sl = new ShellLink(txtFile.Text);
                 txtFile.Text = sl.Target;
                 txtArguments.Text = sl.Arguments;
                 txtDir.Text = sl.WorkingDirectory;
@@ -66,6 +66,11 @@ namespace FLaunch
         private void FormProperty_Load(object sender, EventArgs e)
         {
             Icon = Resources.FLaunch;
+        }
+
+        private void TxtName_TextChanged(object sender, EventArgs e)
+        {
+            Text = $"{txtName.Text} のプロパティ";
         }
     }
 }
