@@ -90,8 +90,10 @@ namespace FLaunch
         {
             // サイズ等の初期設定
             option = new FLOption();
-            if (option.Width > 0) Width = option.Width;
-            if (option.Height > 0) Height = option.Height;
+            var width = option.Width;
+            var height = option.Height;
+            if (width > 0) Width = width;
+            if (height > 0) Height = height;
             panel1.SetBounds(0, menuStrip1.Height, ClientSize.Width - vScrollBar1.Width, ClientSize.Height - menuStrip1.Height);
             vScrollBar1.SetBounds(panel1.Width, panel1.Top, vScrollBar1.Width, panel1.Height);
 
@@ -299,7 +301,7 @@ namespace FLaunch
             }
             catch (Exception ex)
             {
-                MessageBox.Show("作業フォルダを開けませんでした。\n" + Selected.dir + "\n\n" + ex.Message);
+                MessageBox.Show($"作業フォルダを開けませんでした。\n{Selected.dir}\n\n{ex.Message}");
             }
         }
 
@@ -379,7 +381,7 @@ namespace FLaunch
             }
             catch (Exception ex)
             {
-                MessageBox.Show("ファイルの場所を開けませんでした。\n" + Selected.file + "\n\n" + ex.Message);
+                MessageBox.Show($"ファイルの場所を開けませんでした。\n{Selected.file}\n\n{ex.Message}");
             }
         }
     }
