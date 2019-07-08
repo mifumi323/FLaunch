@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Reflection;
 
 namespace FLaunch
 {
@@ -52,7 +51,7 @@ namespace FLaunch
             {
                 using (TextReader sr = new StreamReader(FileName))
                 {
-                    Type type = GetType();
+                    var type = GetType();
                     string line;
                     while ((line = sr.ReadLine()) != null)
                     {
@@ -61,7 +60,7 @@ namespace FLaunch
                             string[] item = line.Split('\t');
                             if (item.Length < 2) continue;
 
-                            PropertyInfo pi = type.GetProperty(item[0]);
+                            var pi = type.GetProperty(item[0]);
                             if (!pi.CanWrite) continue;
 
                             switch (Type.GetTypeCode(pi.PropertyType))
@@ -135,10 +134,10 @@ namespace FLaunch
             if (!dirty) return;
             using (TextWriter sw = new StreamWriter(FileName))
             {
-                foreach (PropertyInfo pi in GetType().GetProperties())
+                foreach (var pi in GetType().GetProperties())
                 {
                     if (!pi.CanWrite) continue;
-                    sw.WriteLine("{0}\t{1}", pi.Name, pi.GetValue(this, null).ToString());
+                    sw.WriteLine($"{pi.Name}\t{pi.GetValue(this, null).ToString()}");
                 }
             }
             dirty = false;

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("MifuminSoft")]
 [assembly: AssemblyProduct("FLaunch")]
-[assembly: AssemblyCopyright("Copyright (C) 2007-2018 Mifumi Matsuda")]
+[assembly: AssemblyCopyright("Copyright (C) 2007-2019 Mifumi Matsuda")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-//[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.2.0.0")]
+//[assembly: AssemblyFileVersion("1.2.0.0")]
