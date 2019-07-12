@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FLData.cs" />
+    <Compile Include="FLItem.cs" />
     <Compile Include="FLOption.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>

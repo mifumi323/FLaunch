@@ -28,7 +28,7 @@ namespace FLaunch
         {
             get
             {
-                string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+                var path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
                     "\\" + Application.CompanyName + "\\" + Application.ProductName;
                 if (!Directory.Exists(path)) Directory.CreateDirectory(path);
                 return path;
