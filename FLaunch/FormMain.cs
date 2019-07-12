@@ -204,9 +204,9 @@ namespace FLaunch
             if (selected == null) return;
             // この順番でないと自身をパラメータつきで呼び出したときまずい
             Hide();
-            try { Directory.SetCurrentDirectory(selected.dir); }
+            try { Directory.SetCurrentDirectory(Environment.ExpandEnvironmentVariables(selected.dir)); }
             catch (Exception) { }
-            var psi = new ProcessStartInfo(selected.file, selected.arguments);
+            var psi = new ProcessStartInfo(Environment.ExpandEnvironmentVariables(selected.file), Environment.ExpandEnvironmentVariables(selected.arguments));
             if (runAs)
             {
                 psi.Verb = "RunAs";
