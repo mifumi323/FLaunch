@@ -53,7 +53,7 @@ namespace FLaunch
         {
             try
             {
-                var sl = new ShellLink(txtFile.Text);
+                using var sl = new ShellLink(txtFile.Text);
                 txtFile.Text = sl.Target;
                 txtArguments.Text = sl.Arguments;
                 txtDir.Text = sl.WorkingDirectory;

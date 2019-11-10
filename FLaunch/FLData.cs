@@ -23,14 +23,12 @@ namespace FLaunch
         {
             try
             {
-                using (TextReader sr = new StreamReader(FileName))
+                using TextReader sr = new StreamReader(FileName);
+                string line;
+                while ((line = sr.ReadLine()) != null)
                 {
-                    string line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        try { list.Add(new FLItem(line)); }
-                        catch (Exception) { }
-                    }
+                    try { list.Add(new FLItem(line)); }
+                    catch (Exception) { }
                 }
             }
             catch (FileNotFoundException) { }
@@ -41,7 +39,7 @@ namespace FLaunch
             {
                 try
                 {
-                    var sl = new ShellLink(p);
+                    using var sl = new ShellLink(p);
                     list.Add(new FLItem(
                         Path.GetFileNameWithoutExtension(p), p, sl.WorkingDirectory, "", sl.Description, ""
                         ));
@@ -53,12 +51,10 @@ namespace FLaunch
         }
         private void Save(Func<FLItem, bool> o)
         {
-            using (TextWriter sw = new StreamWriter(FileName))
+            using TextWriter sw = new StreamWriter(FileName);
+            foreach (var item in list)
             {
-                foreach (var item in list)
-                {
-                    if (o(item)) sw.WriteLine(item.ToString());
-                }
+                if (o(item)) sw.WriteLine(item.ToString());
             }
         }
         private void Save()

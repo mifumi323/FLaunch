@@ -206,14 +206,17 @@ namespace FLaunch
             Hide();
             try { Directory.SetCurrentDirectory(Environment.ExpandEnvironmentVariables(selected.dir)); }
             catch (Exception) { }
-            var psi = new ProcessStartInfo(Environment.ExpandEnvironmentVariables(selected.file), Environment.ExpandEnvironmentVariables(selected.arguments));
+            using var process = new Process();
+            var psi = process.StartInfo;
+            psi.FileName = Environment.ExpandEnvironmentVariables(selected.file);
+            psi.Arguments = Environment.ExpandEnvironmentVariables(selected.arguments);
             if (runAs)
             {
                 psi.Verb = "RunAs";
             }
             try
             {
-                Process.Start(psi);
+                process.Start();
                 FLData.Score(selected);
             }
             catch (Exception)
