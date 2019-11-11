@@ -53,6 +53,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Properties\FLaunch.ico</ApplicationIcon>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
