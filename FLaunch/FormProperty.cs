@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using FLaunch.Properties;
-using util;
 
 namespace FLaunch
 {
@@ -53,8 +52,8 @@ namespace FLaunch
         {
             try
             {
-                using var sl = new ShellLink(txtFile.Text);
-                txtFile.Text = sl.Target;
+                var sl = new ShortcutLink(txtFile.Text);
+                txtFile.Text = sl.TargetPath;
                 txtArguments.Text = sl.Arguments;
                 txtDir.Text = sl.WorkingDirectory;
                 if (txtComment.Text == "" && sl.Description != "") txtComment.Text = sl.Description;

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using util;
 
 namespace FLaunch
 {
@@ -39,7 +38,7 @@ namespace FLaunch
             {
                 try
                 {
-                    using var sl = new ShellLink(p);
+                    var sl = new ShortcutLink(p);
                     list.Add(new FLItem(
                         Path.GetFileNameWithoutExtension(p), p, sl.WorkingDirectory, "", sl.Description, ""
                         ));
