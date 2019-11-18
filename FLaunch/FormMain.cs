@@ -206,12 +206,12 @@ namespace FLaunch
             if (selected == null) return;
             // この順番でないと自身をパラメータつきで呼び出したときまずい
             Hide();
-            try { Directory.SetCurrentDirectory(Environment.ExpandEnvironmentVariables(selected.dir)); }
+            try { Directory.SetCurrentDirectory(AutoExpandEnvironmentVariables(selected.dir)); }
             catch (Exception) { }
             using var process = new Process();
             var psi = process.StartInfo;
-            psi.FileName = Environment.ExpandEnvironmentVariables(selected.file);
-            psi.Arguments = Environment.ExpandEnvironmentVariables(selected.arguments);
+            psi.FileName = AutoExpandEnvironmentVariables(selected.file);
+            psi.Arguments = AutoExpandEnvironmentVariables(selected.arguments);
             if (runAs)
             {
                 psi.Verb = "RunAs";
@@ -390,6 +390,35 @@ namespace FLaunch
             {
                 MessageBox.Show($"ファイルの場所を開けませんでした。\n{Selected.file}\n\n{ex.Message}");
             }
+        }
+
+        private void ExpandEnvironmentVariablesToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            expandEnvironmentVariablesOnToolStripMenuItem.Checked = option.ExpandEnvironmentVariables;
+            expandEnvironmentVariablesOffToolStripMenuItem.Checked = !option.ExpandEnvironmentVariables;
+            expandEnvironmentVariablesOnToolStripMenuItem.ToolTipText = option.ExpandEnvironmentVariables ?
+                "環境変数の展開は現在有効です" :
+                "環境変数の展開を有効にします";
+            expandEnvironmentVariablesOffToolStripMenuItem.ToolTipText = !option.ExpandEnvironmentVariables ?
+                "環境変数の展開は現在無効です" :
+                "環境変数の展開を無効にします";
+        }
+
+        private void ExpandEnvironmentVariablesOnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            option.ExpandEnvironmentVariables = true;
+        }
+
+        private void ExpandEnvironmentVariablesOffToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            option.ExpandEnvironmentVariables = false;
+        }
+
+        private string AutoExpandEnvironmentVariables(string path)
+        {
+            return option.ExpandEnvironmentVariables ?
+                Environment.ExpandEnvironmentVariables(path)
+                : path;
         }
     }
 }

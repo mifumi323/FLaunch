@@ -36,6 +36,11 @@
             this.dateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
+            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expandEnvironmentVariablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expandEnvironmentVariablesOnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expandEnvironmentVariablesOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,6 +87,8 @@
             this.dateToolStripMenuItem,
             this.nameToolStripMenuItem,
             this.fileToolStripMenuItem,
+            this.toolStripMenuItem6,
+            this.optionToolStripMenuItem,
             this.toolStripMenuItem2,
             this.aboutToolStripMenuItem,
             this.helpToolStripMenuItem,
@@ -94,59 +101,96 @@
             // scoreToolStripMenuItem
             // 
             this.scoreToolStripMenuItem.Name = "scoreToolStripMenuItem";
-            this.scoreToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.scoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.scoreToolStripMenuItem.Text = "スコアで並べ替え";
             this.scoreToolStripMenuItem.Click += new System.EventHandler(this.ScoreToolStripMenuItem_Click);
             // 
             // dateToolStripMenuItem
             // 
             this.dateToolStripMenuItem.Name = "dateToolStripMenuItem";
-            this.dateToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.dateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dateToolStripMenuItem.Text = "利用日時で並べ替え";
             this.dateToolStripMenuItem.Click += new System.EventHandler(this.DateToolStripMenuItem_Click);
             // 
             // nameToolStripMenuItem
             // 
             this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nameToolStripMenuItem.Text = "名前で並べ替え";
             this.nameToolStripMenuItem.Click += new System.EventHandler(this.NameToolStripMenuItem_Click);
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.fileToolStripMenuItem.Text = "ファイル名で並べ替え";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.FileToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
+            // 
+            // optionToolStripMenuItem
+            // 
+            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.expandEnvironmentVariablesToolStripMenuItem});
+            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.optionToolStripMenuItem.Text = "オプション(&O)";
+            // 
+            // expandEnvironmentVariablesToolStripMenuItem
+            // 
+            this.expandEnvironmentVariablesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.expandEnvironmentVariablesOnToolStripMenuItem,
+            this.expandEnvironmentVariablesOffToolStripMenuItem});
+            this.expandEnvironmentVariablesToolStripMenuItem.Name = "expandEnvironmentVariablesToolStripMenuItem";
+            this.expandEnvironmentVariablesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expandEnvironmentVariablesToolStripMenuItem.Text = "環境変数の展開(&E)";
+            this.expandEnvironmentVariablesToolStripMenuItem.DropDownOpening += new System.EventHandler(this.ExpandEnvironmentVariablesToolStripMenuItem_DropDownOpening);
+            // 
+            // expandEnvironmentVariablesOnToolStripMenuItem
+            // 
+            this.expandEnvironmentVariablesOnToolStripMenuItem.Name = "expandEnvironmentVariablesOnToolStripMenuItem";
+            this.expandEnvironmentVariablesOnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expandEnvironmentVariablesOnToolStripMenuItem.Text = "O&N";
+            this.expandEnvironmentVariablesOnToolStripMenuItem.Click += new System.EventHandler(this.ExpandEnvironmentVariablesOnToolStripMenuItem_Click);
+            // 
+            // expandEnvironmentVariablesOffToolStripMenuItem
+            // 
+            this.expandEnvironmentVariablesOffToolStripMenuItem.Name = "expandEnvironmentVariablesOffToolStripMenuItem";
+            this.expandEnvironmentVariablesOffToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expandEnvironmentVariablesOffToolStripMenuItem.Text = "O&FF";
+            this.expandEnvironmentVariablesOffToolStripMenuItem.Click += new System.EventHandler(this.ExpandEnvironmentVariablesOffToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(172, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "バージョン情報(&A)";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.helpToolStripMenuItem.Text = "取扱説明書(&H)";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(172, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "終了(&E)";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -189,7 +233,7 @@
             this.toolStripMenuItem4,
             this.propertyToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 176);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 154);
             // 
             // executeToolStripMenuItem
             // 
@@ -313,6 +357,11 @@
         private System.Windows.Forms.ToolStripMenuItem runAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openFileDirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expandEnvironmentVariablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expandEnvironmentVariablesOnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem expandEnvironmentVariablesOffToolStripMenuItem;
     }
 }
 

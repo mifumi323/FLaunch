@@ -44,6 +44,19 @@ namespace FLaunch
                 }
             }
         }
+        private bool myExpandEnvironmentVariables = true;
+        public bool ExpandEnvironmentVariables
+        {
+            get => myExpandEnvironmentVariables;
+            set
+            {
+                if (myExpandEnvironmentVariables != value)
+                {
+                    myExpandEnvironmentVariables = value;
+                    Dirty();
+                }
+            }
+        }
 
         public FLOption()
         {
