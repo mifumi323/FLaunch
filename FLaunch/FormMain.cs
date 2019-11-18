@@ -169,7 +169,7 @@ namespace FLaunch
                 if (-h < point.Y && point.Y < panel1.ClientRectangle.Height)
                 {
                     if (item == Selected) g.FillRectangle(brushSel, 0.0f, point.Y, ClientRectangle.Width, h);
-                    Icon icon = GetIcon(item.file);
+                    Icon icon = GetIcon(AutoExpandEnvironmentVariables(item.file));
                     if (icon != null) g.DrawIcon(icon, new Rectangle(1, (int)point.Y + 1, 16, 16));
                     g.DrawString(item.name, font, item != Selected ? brush : brushSelText, point);
                 }
@@ -300,13 +300,14 @@ namespace FLaunch
                 MessageBox.Show("作業フォルダがありません。");
                 return;
             }
+            var dir = AutoExpandEnvironmentVariables(Selected.dir);
             try
             {
-                Process.Start(Selected.dir);
+                Process.Start(dir);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"作業フォルダを開けませんでした。\n{Selected.dir}\n\n{ex.Message}");
+                MessageBox.Show($"作業フォルダを開けませんでした。\n{dir}\n\n{ex.Message}");
             }
         }
 
@@ -383,7 +384,7 @@ namespace FLaunch
             Hide();
             try
             {
-                var dir = Path.GetDirectoryName(Selected.file);
+                var dir = Path.GetDirectoryName(AutoExpandEnvironmentVariables(Selected.file));
                 Process.Start(dir);
             }
             catch (Exception ex)
