@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using FLaunch.Properties;
 
@@ -12,6 +13,7 @@ namespace FLaunch
     public partial class FormMain : Form
     {
         bool bRunning = true;
+        private bool deleteOnExit = false;
 
         FLItem[] list;
         private FLItem mySelected;
@@ -133,6 +135,16 @@ namespace FLaunch
             else
             {
                 notifyIcon1.Visible = false;
+                if (deleteOnExit)
+                {
+                    File.Delete(FLOption.FileName);
+                    File.Delete(FLData.FileName);
+                    if (!Directory.EnumerateFileSystemEntries(Program.UserAppDataPath).Any())
+                    {
+                        Directory.Delete(Program.UserAppDataPath);
+                    }
+                    return;
+                }
             }
             option.Save();
         }
@@ -420,6 +432,20 @@ namespace FLaunch
             return option.ExpandEnvironmentVariables ?
                 Environment.ExpandEnvironmentVariables(path)
                 : path;
+        }
+
+        private void ExitAndDeleteDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            const string text = "データを消して終了します。\nリストの内容はなくなり、元に戻せませんが、よろしいですか？";
+            const string caption = "データを消して終了";
+            if (MessageBox.Show(this, text, caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) != DialogResult.Yes)
+            {
+                return;
+            }
+
+            bRunning = false;
+            deleteOnExit = true;
+            Close();
         }
     }
 }

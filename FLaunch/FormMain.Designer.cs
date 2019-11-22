@@ -41,6 +41,7 @@
             this.expandEnvironmentVariablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandEnvironmentVariablesOnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandEnvironmentVariablesOffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitAndDeleteDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +61,7 @@
             this.propertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panel1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -134,7 +136,9 @@
             // optionToolStripMenuItem
             // 
             this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.expandEnvironmentVariablesToolStripMenuItem});
+            this.expandEnvironmentVariablesToolStripMenuItem,
+            this.toolStripMenuItem7,
+            this.exitAndDeleteDataToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             this.optionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.optionToolStripMenuItem.Text = "オプション(&O)";
@@ -152,16 +156,23 @@
             // expandEnvironmentVariablesOnToolStripMenuItem
             // 
             this.expandEnvironmentVariablesOnToolStripMenuItem.Name = "expandEnvironmentVariablesOnToolStripMenuItem";
-            this.expandEnvironmentVariablesOnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expandEnvironmentVariablesOnToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
             this.expandEnvironmentVariablesOnToolStripMenuItem.Text = "O&N";
             this.expandEnvironmentVariablesOnToolStripMenuItem.Click += new System.EventHandler(this.ExpandEnvironmentVariablesOnToolStripMenuItem_Click);
             // 
             // expandEnvironmentVariablesOffToolStripMenuItem
             // 
             this.expandEnvironmentVariablesOffToolStripMenuItem.Name = "expandEnvironmentVariablesOffToolStripMenuItem";
-            this.expandEnvironmentVariablesOffToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.expandEnvironmentVariablesOffToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
             this.expandEnvironmentVariablesOffToolStripMenuItem.Text = "O&FF";
             this.expandEnvironmentVariablesOffToolStripMenuItem.Click += new System.EventHandler(this.ExpandEnvironmentVariablesOffToolStripMenuItem_Click);
+            // 
+            // exitAndDeleteDataToolStripMenuItem
+            // 
+            this.exitAndDeleteDataToolStripMenuItem.Name = "exitAndDeleteDataToolStripMenuItem";
+            this.exitAndDeleteDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitAndDeleteDataToolStripMenuItem.Text = "データを消して終了";
+            this.exitAndDeleteDataToolStripMenuItem.Click += new System.EventHandler(this.ExitAndDeleteDataToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -297,6 +308,11 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(177, 6);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -362,6 +378,8 @@
         private System.Windows.Forms.ToolStripMenuItem expandEnvironmentVariablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expandEnvironmentVariablesOnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expandEnvironmentVariablesOffToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitAndDeleteDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem7;
     }
 }
 
