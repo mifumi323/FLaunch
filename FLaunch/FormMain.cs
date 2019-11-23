@@ -447,5 +447,21 @@ namespace FLaunch
             deleteOnExit = true;
             Close();
         }
+
+        private void ExportListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using var sfd = new SaveFileDialog()
+            {
+                DefaultExt = "tsv",
+                FileName = Path.GetFileName(FLData.FileName),
+                Filter = "タブ区切り(Tab Sepa)|*.tsv|その他|*.*",
+                Title = "エクスポート",
+            };
+            if (sfd.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+            File.Copy(FLData.FileName, sfd.FileName, true);
+        }
     }
 }
