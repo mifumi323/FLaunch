@@ -461,7 +461,14 @@ namespace FLaunch
             {
                 return;
             }
-            File.Copy(FLData.FileName, sfd.FileName, true);
+            try
+            {
+                File.Copy(FLData.FileName, sfd.FileName, true);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(this, "エクスポートに失敗しました。", "エクスポート", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ImportListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -491,14 +498,26 @@ namespace FLaunch
                 }
                 merge = result == DialogResult.Yes;
             }
-            if (merge)
+            try
             {
-                FLData.Merge(ofd.FileName);
+                if (merge)
+                {
+                    FLData.Merge(ofd.FileName);
+                }
+                else
+                {
+                    File.Copy(ofd.FileName, FLData.FileName, true);
+                }
             }
-            else
+            catch (Exception)
             {
-                File.Copy(ofd.FileName, FLData.FileName, true);
+                MessageBox.Show(this, "インポートに失敗しました。", "エクスポート", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void DataToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
+        {
+            exportListToolStripMenuItem.Enabled = FLData.Get().Any();
         }
     }
 }
