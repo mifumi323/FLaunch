@@ -454,7 +454,7 @@ namespace FLaunch
             {
                 DefaultExt = "tsv",
                 FileName = Path.GetFileName(FLData.FileName),
-                Filter = "タブ区切り(Tab Sepa)|*.tsv|その他|*.*",
+                Filter = "タブ区切りテキスト|*.tsv|その他|*.*",
                 Title = "エクスポート",
             };
             if (sfd.ShowDialog(this) != DialogResult.OK)
@@ -462,6 +462,43 @@ namespace FLaunch
                 return;
             }
             File.Copy(FLData.FileName, sfd.FileName, true);
+        }
+
+        private void ImportListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using var ofd = new OpenFileDialog()
+            {
+                FileName = Path.GetFileName(FLData.FileName),
+                Filter = "タブ区切りテキスト|*.tsv|その他|*.*",
+                Title = "インポート",
+            };
+            if (ofd.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+            var merge = false;
+            if (FLData.Get().Any())
+            {
+                const string text = "既にあるリストと統合しますか？\n"
+                    + "[はい] 今あるリストを残したまま新しいリストを追加します。\n"
+                    + "[いいえ] 今あるリストを消して新しいリストに入れ替えます。\n"
+                    + "[キャンセル] インポートを取り消し、今あるリストは何も変わりません。";
+                const string caption = "インポート";
+                var result = MessageBox.Show(this, text, caption, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.Cancel)
+                {
+                    return;
+                }
+                merge = result == DialogResult.Yes;
+            }
+            if (merge)
+            {
+                FLData.Merge(ofd.FileName);
+            }
+            else
+            {
+                File.Copy(ofd.FileName, FLData.FileName, true);
+            }
         }
     }
 }

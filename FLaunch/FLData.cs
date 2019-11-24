@@ -20,9 +20,19 @@ namespace FLaunch
 
         private FLData()
         {
+            Load(FileName);
+        }
+
+        private FLData(string fileName)
+        {
+            Load(fileName);
+        }
+
+        private void Load(string fileName)
+        {
             try
             {
-                using TextReader sr = new StreamReader(FileName);
+                using TextReader sr = new StreamReader(fileName);
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
@@ -32,6 +42,7 @@ namespace FLaunch
             }
             catch (FileNotFoundException) { }
         }
+
         private void InnerAdd(string p)
         {
             if (p.EndsWith(".lnk", StringComparison.OrdinalIgnoreCase))
@@ -112,6 +123,14 @@ namespace FLaunch
                 if (item.Equals(from)) item.CopyFrom(to);
                 return true;
             });
+        }
+
+        public static void Merge(string fileName)
+        {
+            var data = new FLData();
+            var add = new FLData(fileName);
+            data.list.AddRange(add.list);
+            data.Save();
         }
     }
 }
