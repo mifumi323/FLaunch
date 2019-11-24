@@ -140,9 +140,7 @@
             // optionToolStripMenuItem
             // 
             this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.expandEnvironmentVariablesToolStripMenuItem,
-            this.toolStripMenuItem7,
-            this.exitAndDeleteDataToolStripMenuItem});
+            this.expandEnvironmentVariablesToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             this.optionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.optionToolStripMenuItem.Text = "オプション(&O)";
@@ -187,7 +185,9 @@
             // 
             this.dataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportListToolStripMenuItem,
-            this.importListToolStripMenuItem});
+            this.importListToolStripMenuItem,
+            this.toolStripMenuItem7,
+            this.exitAndDeleteDataToolStripMenuItem});
             this.dataToolStripMenuItem.Name = "dataToolStripMenuItem";
             this.dataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.dataToolStripMenuItem.Text = "データ管理(&D)";
