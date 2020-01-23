@@ -67,10 +67,16 @@ namespace FLaunch
 
         private void UpdateList()
         {
-            list = FLData.GetArray();
+            list = FLData.Get().Where(item => Filter(item)).ToArray();
             Array.Sort(list, comparison);
             UpdateScroll();
             panel1.Refresh();
+        }
+
+        private bool Filter(FLItem item)
+        {
+            // TODO: 絞り込み(#14 #15)
+            return true;
         }
 
         int ScoreComparison(FLItem x, FLItem y) => y.score.CompareTo(x.score);
