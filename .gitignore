@@ -2,4 +2,5 @@
 bin/
 img/
 obj/
+packages/
 publish/
