@@ -67,16 +67,24 @@ namespace FLaunch
 
         private void UpdateList()
         {
-            list = FLData.Get().Where(item => Filter(item)).ToArray();
+            var condition = tscbFilter.Text.ToLower();
+            list = FLData.Get().Where(item => Filter(item, condition)).ToArray();
             Array.Sort(list, comparison);
             UpdateScroll();
             panel1.Refresh();
         }
 
-        private bool Filter(FLItem item)
+        private bool Filter(FLItem item, string condition)
         {
-            // TODO: 絞り込み(#14 #15)
-            return true;
+            if (condition == "")
+            {
+                return true;
+            }
+            if (condition[0] == '#')
+            {
+                return item.tag.Any(tag => tag.ToLower() == condition.Substring(1));
+            }
+            return item.name.ToLower().Contains(condition);
         }
 
         int ScoreComparison(FLItem x, FLItem y) => y.score.CompareTo(x.score);
@@ -524,6 +532,11 @@ namespace FLaunch
         private void DataToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
             exportListToolStripMenuItem.Enabled = FLData.Get().Any();
+        }
+
+        private void TscbFilter_TextChanged(object sender, EventArgs e)
+        {
+            UpdateList();
         }
     }
 }
