@@ -525,7 +525,7 @@ namespace FLaunch
             }
             catch (Exception)
             {
-                MessageBox.Show(this, "インポートに失敗しました。", "エクスポート", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "インポートに失敗しました。", "インポート", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
