@@ -43,21 +43,26 @@ namespace FLaunch
             catch (FileNotFoundException) { }
         }
 
-        private void InnerAdd(string p)
+        private FLItem InnerAdd(string p)
         {
             if (p.EndsWith(".lnk", StringComparison.OrdinalIgnoreCase))
             {
                 try
                 {
                     var sl = new ShortcutLink(p);
-                    list.Add(new FLItem(
+                    var slItem = new FLItem(
                         Path.GetFileNameWithoutExtension(p), p, sl.WorkingDirectory, "", sl.Description, ""
-                        ));
-                    return;
+                        );
+                    list.Add(slItem);
+
+                    return slItem;
                 }
                 catch (Exception) { }
             }
-            list.Add(new FLItem(Path.GetFileNameWithoutExtension(p), p, Path.GetDirectoryName(p), "", "", ""));
+            var normalItem = new FLItem(Path.GetFileNameWithoutExtension(p), p, Path.GetDirectoryName(p), "", "", "");
+            list.Add(normalItem);
+
+            return normalItem;
         }
         private void Save(Func<FLItem, bool> o)
         {
@@ -72,11 +77,13 @@ namespace FLaunch
             Save(item => true);
         }
 
-        public static void Add(string p)
+        public static FLItem Add(string p)
         {
             var data = new FLData();
-            data.InnerAdd(p);
+            var item = data.InnerAdd(p);
             data.Save();
+
+            return item;
         }
         public static void Add(string[] p)
         {

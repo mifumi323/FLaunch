@@ -538,5 +538,24 @@ namespace FLaunch
         {
             UpdateList();
         }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using var ofd = new OpenFileDialog()
+            {
+                Filter = "実行ファイル(*.exe)|*.exe|ショートカット(*.lnk)|*.lnk|すべてのファイル(*.*)|*.*",
+            };
+            if (ofd.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+            var item = FLData.Add(ofd.FileName);
+#pragma warning disable IDE0067 // スコープを失う前にオブジェクトを破棄
+            new FormProperty
+            {
+                Item = item
+            }.Show();
+#pragma warning restore IDE0067 // スコープを失う前にオブジェクトを破棄
+        }
     }
 }
