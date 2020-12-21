@@ -28,14 +28,10 @@ namespace FLaunch
         }
 
         FLOption option = null;
-
-#pragma warning disable IDE0069 // 破棄可能なフィールドは破棄しなければなりません
         private readonly Font font = new Font("Arial", 12);
         private readonly Brush brush = new SolidBrush(SystemColors.WindowText);
         private readonly Brush brushSel = new SolidBrush(SystemColors.Highlight);
         private readonly Brush brushSelText = new SolidBrush(SystemColors.HighlightText);
-#pragma warning restore IDE0069 // 破棄可能なフィールドは破棄しなければなりません
-
         readonly Dictionary<string, Icon> icons = new Dictionary<string, Icon>();
         readonly Queue<string> iconToRead = new Queue<string>();
 
@@ -55,7 +51,6 @@ namespace FLaunch
             else
             {
                 UpdateList();
-                UpdateTags();
                 Location = Cursor.Position;
                 if (Right > Screen.PrimaryScreen.WorkingArea.Right) Left -= Width;
                 if (Bottom > Screen.PrimaryScreen.WorkingArea.Bottom) Top -= Height;
@@ -73,12 +68,6 @@ namespace FLaunch
             Array.Sort(list, comparison);
             UpdateScroll();
             panel1.Refresh();
-        }
-
-        private void UpdateTags()
-        {
-            tscbFilter.Items.Clear();
-            tscbFilter.Items.AddRange(FLData.Get().SelectMany(item => item.tag).Select(tag => $"#{tag}").ToArray());
         }
 
         private bool Filter(FLItem item, string condition)
@@ -346,12 +335,10 @@ namespace FLaunch
 
         private void PropertyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-#pragma warning disable IDE0067 // スコープを失う前にオブジェクトを破棄
             new FormProperty
             {
                 Item = Selected
             }.Show();
-#pragma warning restore IDE0067 // スコープを失う前にオブジェクトを破棄
         }
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -557,12 +544,10 @@ namespace FLaunch
                 return;
             }
             var item = FLData.Add(ofd.FileName);
-#pragma warning disable IDE0067 // スコープを失う前にオブジェクトを破棄
             new FormProperty
             {
                 Item = item
             }.Show();
-#pragma warning restore IDE0067 // スコープを失う前にオブジェクトを破棄
         }
     }
 }

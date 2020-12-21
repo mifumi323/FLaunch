@@ -148,7 +148,7 @@ namespace FLaunch
                 foreach (var pi in GetType().GetProperties())
                 {
                     if (!pi.CanWrite) continue;
-                    sw.WriteLine($"{pi.Name}\t{pi.GetValue(this, null).ToString()}");
+                    sw.WriteLine($"{pi.Name}\t{pi.GetValue(this, null)}");
                 }
             }
             dirty = false;
