@@ -16,6 +16,7 @@ namespace FLaunch
         bool bRunning = true;
         private bool deleteOnExit = false;
 
+        List<FLItem> allList;
         FLItem[] list;
         private FLItem mySelected;
         public FLItem Selected
@@ -83,7 +84,8 @@ namespace FLaunch
         private void UpdateList()
         {
             var condition = tscbFilter.Text.ToLower();
-            list = FLData.Get().Where(item => Filter(item, condition)).ToArray();
+            allList = FLData.Get();
+            list = allList.Where(item => Filter(item, condition)).ToArray();
             Array.Sort(list, comparison);
             UpdateScroll();
             panel1.Refresh();
@@ -356,10 +358,12 @@ namespace FLaunch
         {
             new FormProperty
             {
-                AllTags = list.SelectMany(item => item.tag).Distinct().OrderBy(tag => tag).ToArray(),
+                AllTags = AllTags,
                 Item = Selected,
             }.Show();
         }
+
+        private string[] AllTags => allList.SelectMany(item => item.tag).Distinct().OrderBy(tag => tag).ToArray();
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
