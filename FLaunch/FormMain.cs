@@ -60,6 +60,7 @@ namespace FLaunch
             else
             {
                 UpdateList();
+                UpdateTags();
                 Location = Cursor.Position;
                 if (Right > Screen.PrimaryScreen.WorkingArea.Right) Left -= Width;
                 if (Bottom > Screen.PrimaryScreen.WorkingArea.Bottom) Top -= Height;
@@ -89,6 +90,12 @@ namespace FLaunch
             Array.Sort(list, comparison);
             UpdateScroll();
             panel1.Refresh();
+        }
+
+        private void UpdateTags()
+        {
+            tscbFilter.Items.Clear();
+            tscbFilter.Items.AddRange(AllTags.Select(tag => $"#{tag}").ToArray());
         }
 
         private bool Filter(FLItem item, string condition)
