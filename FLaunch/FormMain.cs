@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using FLaunch.Properties;
 
@@ -28,14 +29,23 @@ namespace FLaunch
         }
 
         FLOption option = null;
+
+#pragma warning disable IDE0069 // 破棄可能なフィールドは破棄しなければなりません
         private readonly Font font = new Font("Arial", 12);
         private readonly Brush brush = new SolidBrush(SystemColors.WindowText);
         private readonly Brush brushSel = new SolidBrush(SystemColors.Highlight);
         private readonly Brush brushSelText = new SolidBrush(SystemColors.HighlightText);
+#pragma warning restore IDE0069 // 破棄可能なフィールドは破棄しなければなりません
+
         readonly Dictionary<string, Icon> icons = new Dictionary<string, Icon>();
         readonly Queue<string> iconToRead = new Queue<string>();
 
         Comparison<FLItem> comparison;
+
+        private IntPtr activeOtherWindow = IntPtr.Zero;
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
 
         public FormMain()
         {
@@ -46,7 +56,7 @@ namespace FLaunch
         {
             if (Visible)
             {
-                Hide();
+                HideForm();
             }
             else
             {
@@ -58,6 +68,17 @@ namespace FLaunch
                 if (Top < Screen.PrimaryScreen.WorkingArea.Top) Top = Screen.PrimaryScreen.WorkingArea.Top;
                 Show();
                 Activate();
+
+                var activeWindow = GetForegroundWindow();
+                if (activeWindow == Handle)
+                {
+                    activeOtherWindow = IntPtr.Zero;
+                }
+                else
+                {
+                    activeOtherWindow = activeWindow;
+                    timer1.Start();
+                }
             }
         }
 
@@ -140,7 +161,7 @@ namespace FLaunch
             if (bRunning && e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
-                Hide();
+                HideForm();
             }
             else
             {
@@ -161,7 +182,7 @@ namespace FLaunch
 
         private void Form1_Deactivate(object sender, EventArgs e)
         {
-            Hide();
+            HideForm();
             option.Save();
         }
 
@@ -227,7 +248,7 @@ namespace FLaunch
             var selected = Selected;
             if (selected == null) return;
             // この順番でないと自身をパラメータつきで呼び出したときまずい
-            Hide();
+            HideForm();
             try { Directory.SetCurrentDirectory(AutoExpandEnvironmentVariables(selected.dir)); }
             catch (Exception) { }
             using var process = new Process();
@@ -316,7 +337,7 @@ namespace FLaunch
         private void OpenDirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Selected == null) return;
-            Hide();
+            HideForm();
             if (Selected.dir == "")
             {
                 MessageBox.Show("作業フォルダがありません。");
@@ -335,10 +356,12 @@ namespace FLaunch
 
         private void PropertyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+#pragma warning disable IDE0067 // スコープを失う前にオブジェクトを破棄
             new FormProperty
             {
                 Item = Selected
             }.Show();
+#pragma warning restore IDE0067 // スコープを失う前にオブジェクトを破棄
         }
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -401,7 +424,7 @@ namespace FLaunch
         private void OpenFileDirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Selected == null) return;
-            Hide();
+            HideForm();
             try
             {
                 var dir = Path.GetDirectoryName(AutoExpandEnvironmentVariables(Selected.file));
@@ -544,10 +567,32 @@ namespace FLaunch
                 return;
             }
             var item = FLData.Add(ofd.FileName);
+#pragma warning disable IDE0067 // スコープを失う前にオブジェクトを破棄
             new FormProperty
             {
                 Item = item
             }.Show();
+#pragma warning restore IDE0067 // スコープを失う前にオブジェクトを破棄
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (!Visible || ActiveForm != null)
+            {
+                timer1.Stop();
+                return;
+            }
+            if (GetForegroundWindow() != activeOtherWindow)
+            {
+                HideForm();
+            }
+        }
+
+        private void HideForm()
+        {
+                timer1.Stop();
+                Hide();
+                activeOtherWindow = IntPtr.Zero;
         }
     }
 }
