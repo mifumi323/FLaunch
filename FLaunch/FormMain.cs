@@ -23,7 +23,7 @@ namespace FLaunch
             get { return mySelected; }
             set
             {
-                string tt = (mySelected = value) == null ? "" : value.comment;
+                var tt = (mySelected = value)?.ToolTip ?? "";
                 if (toolTip1.GetToolTip(panel1) != tt) toolTip1.SetToolTip(panel1, tt);
             }
         }
