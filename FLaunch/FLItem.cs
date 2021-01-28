@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace FLaunch
 {
@@ -76,8 +78,24 @@ namespace FLaunch
             get => string.Join(sepalator, tag);
             set => tag = value.Split(sepalators, StringSplitOptions.RemoveEmptyEntries);
         }
+        public string ToolTip
+        {
+            get
+            {
+                var tt = new StringBuilder(comment);
+                if (tag.Any())
+                {
+                    if (tt.Length > 0)
+                    {
+                        tt.Append(Environment.NewLine);
+                    }
+                    tt.Append(string.Join(",", tag.Select(t => "#" + t)));
+                }
+                return tt.ToString();
+            }
+        }
 
-        static readonly string sepalator = ",";
-        static readonly char[] sepalators = new char[] { ',', ' ', '\t', '\r', '\n' };
+        public static readonly string sepalator = ",";
+        public static readonly char[] sepalators = new char[] { ',', ' ', '\t', '\r', '\n' };
     }
 }

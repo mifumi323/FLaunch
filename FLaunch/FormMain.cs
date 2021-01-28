@@ -16,6 +16,7 @@ namespace FLaunch
         bool bRunning = true;
         private bool deleteOnExit = false;
 
+        List<FLItem> allList;
         FLItem[] list;
         private FLItem mySelected;
         public FLItem Selected
@@ -23,7 +24,7 @@ namespace FLaunch
             get { return mySelected; }
             set
             {
-                string tt = (mySelected = value) == null ? "" : value.comment;
+                var tt = (mySelected = value)?.ToolTip ?? "";
                 if (toolTip1.GetToolTip(panel1) != tt) toolTip1.SetToolTip(panel1, tt);
             }
         }
@@ -59,6 +60,7 @@ namespace FLaunch
             else
             {
                 UpdateList();
+                UpdateTags();
                 Location = Cursor.Position;
                 if (Right > Screen.PrimaryScreen.WorkingArea.Right) Left -= Width;
                 if (Bottom > Screen.PrimaryScreen.WorkingArea.Bottom) Top -= Height;
@@ -83,10 +85,17 @@ namespace FLaunch
         private void UpdateList()
         {
             var condition = tscbFilter.Text.ToLower();
-            list = FLData.Get().Where(item => Filter(item, condition)).ToArray();
+            allList = FLData.Get();
+            list = allList.Where(item => Filter(item, condition)).ToArray();
             Array.Sort(list, comparison);
             UpdateScroll();
             panel1.Refresh();
+        }
+
+        private void UpdateTags()
+        {
+            tscbFilter.Items.Clear();
+            tscbFilter.Items.AddRange(AllTags.Select(tag => $"#{tag}").ToArray());
         }
 
         private bool Filter(FLItem item, string condition)
@@ -356,9 +365,12 @@ namespace FLaunch
         {
             new FormProperty
             {
-                Item = Selected
+                AllTags = AllTags,
+                Item = Selected,
             }.Show();
         }
+
+        private string[] AllTags => allList.SelectMany(item => item.tag).Distinct().OrderBy(tag => tag).ToArray();
 
         private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
