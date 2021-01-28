@@ -77,7 +77,7 @@ namespace FLaunch
             set => tag = value.Split(sepalators, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        static readonly string sepalator = ",";
-        static readonly char[] sepalators = new char[] { ',', ' ', '\t', '\r', '\n' };
+        public static readonly string sepalator = ",";
+        public static readonly char[] sepalators = new char[] { ',', ' ', '\t', '\r', '\n' };
     }
 }

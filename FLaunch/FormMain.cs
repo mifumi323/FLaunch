@@ -356,7 +356,8 @@ namespace FLaunch
         {
             new FormProperty
             {
-                Item = Selected
+                AllTags = list.SelectMany(item => item.tag).Distinct().OrderBy(tag => tag).ToArray(),
+                Item = Selected,
             }.Show();
         }
 

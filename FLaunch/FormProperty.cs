@@ -18,7 +18,19 @@ namespace FLaunch
                 txtArguments.Text = value.arguments;
                 txtDir.Text = value.dir;
                 txtComment.Text = value.comment;
-                txtTag.Text = value.Tag;
+                foreach (var tag in value.tag)
+                {
+                    CheckTag(tag);
+                }
+            }
+        }
+
+        public string[] AllTags
+        {
+            set
+            {
+                clbTags.Items.Clear();
+                clbTags.Items.AddRange(value);
             }
         }
 
@@ -34,7 +46,12 @@ namespace FLaunch
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            var newItem = new FLItem(txtName.Text, txtFile.Text, txtDir.Text, txtArguments.Text, txtComment.Text, txtTag.Text)
+            var tags = "";
+            foreach (string tag in clbTags.CheckedItems)
+            {
+                tags = tags.Length > 0 ? $"{tags}{FLItem.sepalator}{tag}" : tag;
+            }
+            var newItem = new FLItem(txtName.Text, txtFile.Text, txtDir.Text, txtArguments.Text, txtComment.Text, tags)
             {
                 score = myItem.score,
                 date = myItem.date
@@ -70,6 +87,28 @@ namespace FLaunch
         private void TxtName_TextChanged(object sender, EventArgs e)
         {
             Text = $"{txtName.Text} のプロパティ";
+        }
+
+        private void txtNewTag_Leave(object sender, EventArgs e)
+        {
+            foreach (var tag in new FLItem("", "", "", "", "", txtNewTag.Text).tag)
+            {
+                CheckTag(tag);
+            }
+            txtNewTag.Text = "";
+        }
+
+        private void CheckTag(string tag)
+        {
+            var index = clbTags.Items.IndexOf(tag);
+            if (index >= 0)
+            {
+                clbTags.SetItemChecked(index, true);
+            }
+            else
+            {
+                clbTags.Items.Add(tag, true);
+            }
         }
     }
 }
