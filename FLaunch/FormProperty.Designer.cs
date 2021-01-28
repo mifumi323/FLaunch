@@ -81,14 +81,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(306, 208);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(600, 388);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lblTag
             // 
             this.lblTag.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTag.AutoSize = true;
-            this.lblTag.Location = new System.Drawing.Point(30, 148);
+            this.lblTag.Location = new System.Drawing.Point(30, 238);
             this.lblTag.Name = "lblTag";
             this.lblTag.Size = new System.Drawing.Size(37, 12);
             this.lblTag.TabIndex = 10;
@@ -99,7 +99,7 @@
             this.txtComment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtComment.Location = new System.Drawing.Point(100, 103);
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(203, 19);
+            this.txtComment.Size = new System.Drawing.Size(497, 19);
             this.txtComment.TabIndex = 9;
             // 
             // lblComment
@@ -117,7 +117,7 @@
             this.txtDir.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDir.Location = new System.Drawing.Point(100, 78);
             this.txtDir.Name = "txtDir";
-            this.txtDir.Size = new System.Drawing.Size(203, 19);
+            this.txtDir.Size = new System.Drawing.Size(497, 19);
             this.txtDir.TabIndex = 7;
             // 
             // lblDir
@@ -135,7 +135,7 @@
             this.txtFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtFile.Location = new System.Drawing.Point(100, 28);
             this.txtFile.Name = "txtFile";
-            this.txtFile.Size = new System.Drawing.Size(203, 19);
+            this.txtFile.Size = new System.Drawing.Size(497, 19);
             this.txtFile.TabIndex = 3;
             this.txtFile.TextChanged += new System.EventHandler(this.TxtFile_TextChanged);
             // 
@@ -164,7 +164,7 @@
             this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtName.Location = new System.Drawing.Point(100, 3);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(203, 19);
+            this.txtName.Size = new System.Drawing.Size(497, 19);
             this.txtName.TabIndex = 1;
             this.txtName.TextChanged += new System.EventHandler(this.TxtName_TextChanged);
             // 
@@ -183,14 +183,14 @@
             this.txtArguments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtArguments.Location = new System.Drawing.Point(100, 53);
             this.txtArguments.Name = "txtArguments";
-            this.txtArguments.Size = new System.Drawing.Size(203, 19);
+            this.txtArguments.Size = new System.Drawing.Size(497, 19);
             this.txtArguments.TabIndex = 5;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(243, 226);
+            this.btnCancel.Location = new System.Drawing.Point(537, 406);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -201,7 +201,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(162, 226);
+            this.btnOK.Location = new System.Drawing.Point(456, 406);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 2;
@@ -213,7 +213,7 @@
             // 
             this.btnLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLink.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnLink.Location = new System.Drawing.Point(12, 226);
+            this.btnLink.Location = new System.Drawing.Point(12, 406);
             this.btnLink.Name = "btnLink";
             this.btnLink.Size = new System.Drawing.Size(75, 23);
             this.btnLink.TabIndex = 1;
@@ -228,15 +228,15 @@
             this.clbTags.Location = new System.Drawing.Point(100, 128);
             this.clbTags.MultiColumn = true;
             this.clbTags.Name = "clbTags";
-            this.clbTags.Size = new System.Drawing.Size(203, 52);
+            this.clbTags.Size = new System.Drawing.Size(497, 232);
             this.clbTags.TabIndex = 11;
             // 
             // txtNewTag
             // 
             this.txtNewTag.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNewTag.Location = new System.Drawing.Point(100, 186);
+            this.txtNewTag.Location = new System.Drawing.Point(100, 366);
             this.txtNewTag.Name = "txtNewTag";
-            this.txtNewTag.Size = new System.Drawing.Size(203, 19);
+            this.txtNewTag.Size = new System.Drawing.Size(497, 19);
             this.txtNewTag.TabIndex = 13;
             this.txtNewTag.Leave += new System.EventHandler(this.txtNewTag_Leave);
             // 
@@ -244,7 +244,7 @@
             // 
             this.lnlNewTag.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lnlNewTag.AutoSize = true;
-            this.lnlNewTag.Location = new System.Drawing.Point(3, 189);
+            this.lnlNewTag.Location = new System.Drawing.Point(3, 369);
             this.lnlNewTag.Name = "lnlNewTag";
             this.lnlNewTag.Size = new System.Drawing.Size(91, 12);
             this.lnlNewTag.TabIndex = 12;
@@ -254,7 +254,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(330, 261);
+            this.ClientSize = new System.Drawing.Size(624, 441);
             this.Controls.Add(this.btnLink);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);
