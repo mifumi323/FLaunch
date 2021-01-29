@@ -66,6 +66,7 @@
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.propertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -300,9 +301,11 @@
             this.toolStripMenuItem3,
             this.deleteToolStripMenuItem,
             this.toolStripMenuItem4,
-            this.propertyToolStripMenuItem});
+            this.propertyToolStripMenuItem,
+            this.tagsToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 154);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 198);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // executeToolStripMenuItem
             // 
@@ -360,6 +363,12 @@
             this.propertyToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.propertyToolStripMenuItem.Text = "プロパティ(&R)";
             this.propertyToolStripMenuItem.Click += new System.EventHandler(this.PropertyToolStripMenuItem_Click);
+            // 
+            // tagsToolStripMenuItem
+            // 
+            this.tagsToolStripMenuItem.Name = "tagsToolStripMenuItem";
+            this.tagsToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.tagsToolStripMenuItem.Text = "タグ(&T)";
             // 
             // backgroundWorker1
             // 
@@ -445,6 +454,7 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem tagsToolStripMenuItem;
     }
 }
 

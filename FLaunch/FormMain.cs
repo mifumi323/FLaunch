@@ -17,7 +17,7 @@ namespace FLaunch
         private bool deleteOnExit = false;
 
         List<FLItem> allList;
-        FLItem[] list;
+        FLItem[] list = new FLItem[0];
         private FLItem mySelected;
         public FLItem Selected
         {
@@ -599,6 +599,41 @@ namespace FLaunch
                 timer1.Stop();
                 Hide();
                 activeOtherWindow = IntPtr.Zero;
+        }
+
+        private void tagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var tsmi = sender as ToolStripMenuItem;
+            if (tsmi.Checked)
+            {
+                // 今チェックされている＝チェックを外したい＝タグ削除だ
+                FLData.RemoveTag(Selected, tsmi.Text);
+            }
+            else
+            {
+                // 今チェックされてない＝チェックをつけたい＝タグ追加だ
+                FLData.AddTag(Selected, tsmi.Text);
+            }
+            UpdateList();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            var allTags = AllTags;
+            if (allTags.Any())
+            {
+                var selectedTags = Selected.tag;
+                tagsToolStripMenuItem.DropDownItems.Clear();
+                tagsToolStripMenuItem.DropDownItems.AddRange(allTags.Select(tag => new ToolStripMenuItem(tag, null, tagToolStripMenuItem_Click)
+                {
+                    Checked = selectedTags.Contains(tag),
+                }).ToArray());
+                tagsToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                tagsToolStripMenuItem.Visible = false;
+            }
         }
     }
 }
