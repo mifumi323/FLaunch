@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace FLaunch
 {
@@ -138,6 +139,30 @@ namespace FLaunch
             var add = new FLData(fileName);
             data.list.AddRange(add.list);
             data.Save();
+        }
+
+        public static void AddTag(FLItem item, string tag)
+        {
+            new FLData().Save(i =>
+            {
+                if (item.Equals(i))
+                {
+                    i.tag = i.tag.Union(new[] { tag }).OrderBy(t => t).ToArray();
+                }
+                return true;
+            });
+        }
+
+        public static void RemoveTag(FLItem item, string tag)
+        {
+            new FLData().Save(i =>
+            {
+                if (item.Equals(i))
+                {
+                    i.tag = i.tag.Where(t => t != tag).ToArray();
+                }
+                return true;
+            });
         }
     }
 }
