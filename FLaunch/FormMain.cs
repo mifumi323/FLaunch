@@ -17,7 +17,7 @@ namespace FLaunch
         private bool deleteOnExit = false;
 
         List<FLItem> allList;
-        FLItem[] list;
+        FLItem[] list = new FLItem[0];
         private FLItem mySelected;
         public FLItem Selected
         {
