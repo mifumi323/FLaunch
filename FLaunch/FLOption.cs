@@ -10,7 +10,7 @@ namespace FLaunch
         {
             get
             {
-                if (myFileName == null) myFileName = Path.Combine(Program.UserAppDataPath, "Option.tsv");
+                myFileName ??= Path.Combine(Program.UserAppDataPath, "Option.tsv");
                 return myFileName;
             }
         }
