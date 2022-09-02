@@ -29,7 +29,7 @@ namespace FLaunch
             }
         }
 
-        FLOption option = null;
+        readonly FLOption option = new FLOption();
 
         private readonly Font font = new Font("Arial", 12);
         private readonly Brush brush = new SolidBrush(SystemColors.WindowText);
@@ -131,7 +131,6 @@ namespace FLaunch
         private void Form1_Load(object sender, EventArgs e)
         {
             // サイズ等の初期設定
-            option = new FLOption();
             var width = option.Width;
             var height = option.Height;
             if (width > 0) Width = width;
