@@ -29,7 +29,7 @@ namespace FLaunch
             }
         }
 
-        readonly FLOption option = new FLOption();
+        FLOption option;
 
         private readonly Font font = new Font("Arial", 12);
         private readonly Brush brush = new SolidBrush(SystemColors.WindowText);
@@ -130,6 +130,8 @@ namespace FLaunch
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            option = new FLOption();
+
             // サイズ等の初期設定
             var width = option.Width;
             var height = option.Height;
@@ -189,7 +191,7 @@ namespace FLaunch
         private void Form1_Deactivate(object sender, EventArgs e)
         {
             HideForm();
-            option.Save();
+            option?.Save();
         }
 
         private void Form1_MouseWheel(object sender, MouseEventArgs e)
