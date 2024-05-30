@@ -436,8 +436,8 @@ namespace FLaunch
             HideForm();
             try
             {
-                var dir = Path.GetDirectoryName(AutoExpandEnvironmentVariables(Selected.file));
-                Process.Start(dir);
+                var path = AutoExpandEnvironmentVariables(Selected.file);
+                Process.Start("EXPLORER.EXE", $@"/select,""{path}""");
             }
             catch (Exception ex)
             {
