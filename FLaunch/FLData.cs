@@ -164,5 +164,16 @@ namespace FLaunch
                 return true;
             });
         }
+
+        public static FLItem AddCopy(FLItem originalItem)
+        {
+            var data = new FLData();
+            var copyItem = new FLItem($"{originalItem.name} - コピー", originalItem.file, originalItem.dir, originalItem.arguments, originalItem.comment, originalItem.Tag);
+            copyItem.score = originalItem.score;
+            data.list.Add(copyItem);
+            data.Save();
+
+            return copyItem;
+        }
     }
 }

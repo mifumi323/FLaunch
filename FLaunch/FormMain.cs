@@ -597,9 +597,9 @@ namespace FLaunch
 
         private void HideForm()
         {
-                timer1.Stop();
-                Hide();
-                activeOtherWindow = IntPtr.Zero;
+            timer1.Stop();
+            Hide();
+            activeOtherWindow = IntPtr.Zero;
         }
 
         private void tagToolStripMenuItem_Click(object sender, EventArgs e)
@@ -635,6 +635,17 @@ namespace FLaunch
             {
                 tagsToolStripMenuItem.Visible = false;
             }
+        }
+
+        private void duplicateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var selected = Selected;
+            if (selected == null) return;
+            var item = FLData.AddCopy(selected);
+            new FormProperty
+            {
+                Item = item
+            }.Show();
         }
     }
 }
