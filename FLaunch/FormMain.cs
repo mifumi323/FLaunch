@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using FLaunch.Properties;
 
@@ -635,6 +636,18 @@ namespace FLaunch
             {
                 tagsToolStripMenuItem.Visible = false;
             }
+        }
+
+        private void duplicateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var selected = Selected;
+            if (selected == null) return;
+            var item = FLData.AddCopy(selected);
+            new FormProperty
+            {
+                Item = item
+            }.Show();
+            // TODO: 実装(#33)
         }
     }
 }
