@@ -647,7 +647,6 @@ namespace FLaunch
             {
                 Item = item
             }.Show();
-            // TODO: 実装(#33)
         }
     }
 }
