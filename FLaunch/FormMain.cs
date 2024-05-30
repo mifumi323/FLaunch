@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
 using System.Windows.Forms;
 using FLaunch.Properties;
 
@@ -598,9 +597,9 @@ namespace FLaunch
 
         private void HideForm()
         {
-                timer1.Stop();
-                Hide();
-                activeOtherWindow = IntPtr.Zero;
+            timer1.Stop();
+            Hide();
+            activeOtherWindow = IntPtr.Zero;
         }
 
         private void tagToolStripMenuItem_Click(object sender, EventArgs e)
