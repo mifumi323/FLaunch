@@ -338,6 +338,7 @@ namespace FLaunch
         private void Delete()
         {
             if (Selected == null) return;
+            if (MessageBox.Show($"{Selected.name} を削除しますか？", "削除", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
             FLData.Delete(Selected);
             UpdateList();
         }
