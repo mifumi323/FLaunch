@@ -365,10 +365,16 @@ namespace FLaunch
 
         private void PropertyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            var item = Selected;
+            ShowPropertyForm(item);
+        }
+
+        private void ShowPropertyForm(FLItem item)
+        {
             new FormProperty
             {
                 AllTags = AllTags,
-                Item = Selected,
+                Item = item,
             }.Show();
         }
 
@@ -577,10 +583,7 @@ namespace FLaunch
                 return;
             }
             var item = FLData.Add(ofd.FileName);
-            new FormProperty
-            {
-                Item = item
-            }.Show();
+            ShowPropertyForm(item);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -643,10 +646,7 @@ namespace FLaunch
             var selected = Selected;
             if (selected == null) return;
             var item = FLData.AddCopy(selected);
-            new FormProperty
-            {
-                Item = item
-            }.Show();
+            ShowPropertyForm(item);
         }
     }
 }
